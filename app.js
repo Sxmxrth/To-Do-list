@@ -45,8 +45,9 @@ app.get("/", function(req, res){
     if(err){
         console.log(err);
     }else{
-        
+
         res.render("list", {
+
             kindOfDay : day,
             newTasks : items
     
@@ -59,7 +60,10 @@ app.get("/", function(req, res){
 app.post("/", function(req, res){
 
     let item = req.body.newItem;
-    items.push(item)
+    let itemNew = new Item({
+        name : item
+    })
+    itemNew.save();
     res.redirect("/");
     
 })
