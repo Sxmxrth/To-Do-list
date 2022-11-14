@@ -45,7 +45,6 @@ app.get("/", function(req, res){
     if(err){
         console.log(err);
     }else{
-
         res.render("list", {
 
             kindOfDay : day,
@@ -58,15 +57,6 @@ app.get("/", function(req, res){
 })
 
 app.post("/", function(req, res){
-
-    function checked(){
-        var checkbox = document.getElementById("checkbox");
-        if(checkbox.checked == true){
-            console.log("checked");
-        }else{
-            console.log("not checked");
-        }
-    }
 
     let item = req.body.newItem;
     let itemNew = new Item({
