@@ -41,7 +41,7 @@ app.get("/", function(req, res){
 
    let day = date();
 
-   Item.find( function(err, items){
+   Item.find(function(err, items){
     if(err){
         console.log(err);
     }else{
@@ -59,6 +59,15 @@ app.get("/", function(req, res){
 
 app.post("/", function(req, res){
 
+    function checked(){
+        var checkbox = document.getElementById("checkbox");
+        if(checkbox.checked == true){
+            console.log("checked");
+        }else{
+            console.log("not checked");
+        }
+    }
+
     let item = req.body.newItem;
     let itemNew = new Item({
         name : item
@@ -66,6 +75,14 @@ app.post("/", function(req, res){
     itemNew.save();
     res.redirect("/");
     
+})
+
+app.post("/delete", function(req, res){
+    Item.findByIdAndRemove(req.body.checkbox, function(err){
+        if(!err){
+            res.redirect("/");
+        }
+    })
 })
 
 app.listen(3000, function(){

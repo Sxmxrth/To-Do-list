@@ -7,12 +7,15 @@
       
         
         <% for(let i = 0 ; i<newTasks.length ; i++){ %>
-          <div class="item">
-            <input type="checkbox">
-            <p><%= newTasks[i].name %></p>
-            
-          </div>
-          <% } %>
+          <form action="/delete" method="post" >
+            <div class="item">
+              <input type="checkbox" name="checkbox" value="<%= newTasks[i]._id %>" onchange="this.form.submit()">
+              <p><%= newTasks[i].name %></p>
+            </div>
+          </form>
+
+          
+        <% } %>
 
           <form class="item" action="/" method="post">
             <input type="text" name="newItem" id="newItem" placeholder="New Item" autocomplete="off" />
