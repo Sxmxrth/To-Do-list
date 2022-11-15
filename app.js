@@ -10,7 +10,7 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 
 // let items = ["wake up", "go to college"];
-mongoose.connect("mongodb://0.0.0.0:27017/todolistDB", {useNewUrlParser : true});
+mongoose.connect("mongodb+srv://admin-samarth:Test123@cluster0.hvufriu.mongodb.net/todolistDB", {useNewUrlParser : true});
 
 const itemSchema = new mongoose.Schema({
     name : String
